@@ -1,7 +1,0 @@
-name = "BarSpringModels"
-uuid = "b9330485-1788-4816-aba0-18f96e2edb82"
-authors = ["Damir Akchurin <AkchurinDA@gmail.com>"]
-version = "0.1.0"
-
-[deps]
-LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
