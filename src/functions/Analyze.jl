@@ -21,7 +21,7 @@ function analyze(NC::Matrix{Float64}, EC::Vector{<:Element}, BC::Matrix{Float64}
     F3 = false # Maximum number of increments (i) is reached
 
     # Preallocate:
-    λStore = zeros(iₘ,)
+    λStore = zeros(iₘ)
     PStore = zeros(6 * NN, iₘ)
     UStore = zeros(6 * NN, iₘ)
 

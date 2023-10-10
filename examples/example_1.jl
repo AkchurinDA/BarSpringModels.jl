@@ -51,7 +51,7 @@ begin
         markersize=6)
     scatterlines!(Reference[:, 1], Reference[:, 2],
         markersize=6)
-    xlims!(0, nothing)
-    ylims!(0, nothing)
+    xlims!(0, 0.10)
+    ylims!(0, 1)
     F
 end
