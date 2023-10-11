@@ -5,7 +5,7 @@ function getEquivalentLoad(Load::Vector{Float64}, NC::Matrix{Float64}, EC::Vecto
     # Loop through each element:
     for i in 1:NE
         # Check the element type:
-        if EC[i] isa RB
+        if EC[i] isa RL
             # Extract node indices:
             NI = EC[i].NI # Master node
             NJ = EC[i].NJ # Slave node

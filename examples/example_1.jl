@@ -17,9 +17,9 @@ NC = [
 
 # Define element connectivity:
 EC = [
-    RB(1, 2)
-    CE(2, 3, [CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), PLDC(314 / 0.055, -0.01, 0.055)])
-    RB(4, 3)
+    RL(1, 2)
+    CE1(2, 3, [CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), PLDC(314 / 0.055, -0.01, 0.055)])
+    RL(4, 3)
 ]
 
 # Define boundary conditions:

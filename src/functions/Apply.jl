@@ -26,7 +26,7 @@ function applyCE(KGlobal::Matrix{Float64}, NC::Matrix{Float64}, EC::Vector{<:Ele
     # Loop through each element:
     for i in 1:NE
         # Check the element type:
-        if EC[i] isa RB
+        if EC[i] isa RL
             # Extract node indices:
             NI = EC[i].NI
             NJ = EC[i].NJ

@@ -7,8 +7,9 @@ include("types/LoadDeformationTypes.jl")
 include("types/Elements.jl")
 export CLDC
 export PLDC
-export RB
-export CE
+export RL
+export CE1
+export CE2
 
 # Functions:
 include("functions/Analyze.jl")

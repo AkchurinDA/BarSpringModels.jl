@@ -33,13 +33,13 @@ function analyze(NC::Matrix{Float64}, EC::Vector{<:Element}, BC::Matrix{Float64}
         # Loop through iterations (j):
         for j in 1:jₘ
             # Compute current element deformations:
-            CurrentElementΔ = getCurrentElementΔ(EC, NE, U)
+            CurrentElementΔ = getCurrentElementΔ(NC, EC, NE, U)
 
             # Compute current element stiffnesses:
             CurrentElementK = getCurrentElementK(EC, NE, CurrentElementΔ)
 
             # Assemble global stiffness matrix:
-            KGlobal = assembleKGlobal(EC, NN, NE, CurrentElementK)
+            KGlobal = assembleKGlobal(NC, EC, NN, NE, U, CurrentElementK)
 
             # Apply boundary conditions and constraint equations to the global stiffness matrix:
             KGlobal = applyBC(KGlobal, BC, 10^8)
@@ -69,7 +69,7 @@ function analyze(NC::Matrix{Float64}, EC::Vector{<:Element}, BC::Matrix{Float64}
             U = U + δλ * δUP + δUR
 
             # Compute current element deformations:
-            CurrentElementΔ = getCurrentElementΔ(EC, NE, U)
+            CurrentElementΔ = getCurrentElementΔ(NC, EC, NE, U)
 
             # Compute current element stiffnesses:
             CurrentElementK = getCurrentElementK(EC, NE, CurrentElementΔ)

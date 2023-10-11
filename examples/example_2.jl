@@ -19,11 +19,12 @@ NC = [
 # Define element connectivity:
 PCritical = (π^2 * 29000 * 11.3) / 144^2
 EC = [
-    RB(1, 2)
-    CE(2, 3, [CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(0)])
-    RB(4, 3)
-    CE(5, 2, [PLDC(4 * PCritical / 144, -0.001, 314 / PCritical), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8)])
+    RL(1, 2)
+    CE1(2, 3, [CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(0)])
+    RL(4, 3)
+    CE1(5, 2, [PLDC(4 * PCritical / 144, -0.001, 314 / PCritical), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8)])
 ]
+
 
 # Define boundary conditions:
 BC = zeros(NN, 6)
