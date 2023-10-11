@@ -8,7 +8,7 @@ using MathTeXEngine
         setcolor("white")
         box(O, 600, 600, 50, :fill)
         setcolor("black")
-        box(O, 598, 598, 50, :stroke)
+        box(O, 599, 599, 47.5, :stroke)
     end
 
     # Connection element:
@@ -95,7 +95,7 @@ end
         setcolor("white")
         box(O, 600, 600, 50, :fill)
         setcolor("black")
-        box(O, 598, 598, 50, :stroke)
+        box(O, 599, 599, 47.5, :stroke)
     end
 
     # Axes:

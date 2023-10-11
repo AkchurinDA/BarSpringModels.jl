@@ -4,8 +4,8 @@ using CairoMakie, MathTeXEngine
 CairoMakie.activate!(type=:svg)
 
 # Define the number of nodes and elements in the model:
-NN = 4
-NE = 3
+NN = 5
+NE = 4
 
 # Define nodal coordinates:
 NC = [
@@ -13,13 +13,16 @@ NC = [
     1.44 72 0
     1.44 72 0
     0 144 0
+    0 72 0
 ]
 
 # Define element connectivity:
+PCritical = (π^2 * 29000 * 11.3) / 144^2
 EC = [
     RB(1, 2)
-    CE(2, 3, [CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), PLDC(314 / 0.055, -0.01, 0.055)])
+    CE(2, 3, [CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(0)])
     RB(4, 3)
+    CE(5, 2, [PLDC(4 * PCritical / 144, -0.001, 314 / PCritical), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8), CLDC(10^8)])
 ]
 
 # Define boundary conditions:
@@ -28,6 +31,7 @@ BC[1, :] = [1, 1, 1, 1, 1, 0]
 BC[2, :] = [0, 0, 1, 1, 1, 0]
 BC[3, :] = [0, 0, 1, 1, 1, 0]
 BC[4, :] = [1, 0, 1, 1, 1, 0]
+BC[5, :] = [1, 0, 1, 1, 1, 0]
 
 # Define applied reference load vector:
 P̃ = zeros(NN, 6)
@@ -40,7 +44,7 @@ Solution = analyze(NC, EC, BC, P̃, 150, 1000, 7, 10^(-1), 10^(-3))
 P = vcat(0, abs.(Solution[1])) ./ 155.974
 U = (1.44 .+ vcat(0, abs.(Solution[3][7, :]))) ./ 144
 
-Reference = readdlm("examples/example_1.txt", ',', Float64, '\n')
+Reference = readdlm("examples/example_2.txt", ',', Float64, '\n')
 
 begin
     F = Figure(resolution=72 .* (8, 6), fonts=(; regular=texfont()))
@@ -58,4 +62,4 @@ begin
     F
 end
 
-save("examples/example_1.svg", F)
+save("examples/example_2.svg", F)
